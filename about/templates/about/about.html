@@ -34,12 +34,11 @@
     </div>
     {% endfor %}
 </div>
-<hr>
+{% if user.is_superuser %}
 <div class="card">
     <div class="card-body">
-        {% if user.is_superuser %}
         <a class="btn btn-primary" href="{% url 'about:about_add' %}"><i class="fas fa-plus"></i> Add About</a>
-        {% endif %}
     </div>
 </div>
+{% endif %}
 {% endblock %}
