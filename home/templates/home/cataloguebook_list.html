@@ -27,8 +27,25 @@
         <input type="text" class="form-control" name="text_search" id="text_search" placeholder="Buscar un libro en nuestro catálogo" aria-label="Buscar un libro en nuestro catálogo" aria-describedby="button-addon2">
         <input class="btn btn-outline-secondary" type="submit" value="¡Buscar!">
     </div>
-<hr>
 </form>
+
+{% if book_sell %}
+    {% for book in book_sell %}
+    
+    <div class="post-preview">
+        <a href="{% url 'home:home-detail' book.id %}">
+            <h2 class="post-title">{{book.name}}</h2>
+            <h3 class="post-subtitle">Genere: {{book.genre}}</h3>
+        </a>
+        <p class="post-meta">
+            Autor by
+            <a href="#!">{{book.author}}</a>
+            on publicate {{book.publication_date}}
+        </p>
+    </div>
+    <hr>
+    {% endfor %}
+{% endif %}
 
 <hr>
     {% for home in cataloguebook_list %}
@@ -43,8 +60,8 @@
             on publicate {{home.publication_date}}
         </p>
     </div>
-    <hr>
     {% endfor %}
+<hr>
 
 
 
