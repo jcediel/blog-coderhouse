@@ -1,0 +1,60 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block ChangingContent %}
+
+<h2>¡Observa nuestro catálogo de libros online!</h2>
+{% if user.is_authenticated %}
+<div class="text-center">
+    <h3>¡Bienvenido {{ user.username }}!</h3>
+
+</div>
+
+{% endif %}
+{% if user.is_superuser %}
+<a class="btn btn-primary" href="{% url 'home:home-add' %}">Introducir un nuevo libro en el catálogo</a>
+{% endif %}
+<hr></hr>
+<hr>
+</hr>
+
+<form action="search" method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="text_search" id="text_search" placeholder="Buscar un libro en nuestro catálogo" aria-label="Buscar un libro en nuestro catálogo" aria-describedby="button-addon2">
+        <input class="btn btn-outline-secondary" type="submit" value="¡Buscar!">
+      </div>
+    <!-- <div>
+        <input type="text" name="text_search" id="text_search"  class="form-control" placeholder="Buscar un libro en nuestro catálogo">
+        <input type="submit" value="¡Buscar!">
+    </div> -->
+<hr>
+</form>
+{% if book_sell %}
+    <!-- <ul>
+        {% for book in book_sell %}
+        <li>
+            Libro: {{book.name}}
+
+        </li>
+        {% endfor %}
+    </ul> -->
+{% endif %}
+
+<hr>
+    {% for home in cataloguebook_list %}
+    <div class="post-preview">
+        <a href="{% url 'home:home-detail' home.id %}">
+            <h2 class="post-title">{{home.name}}</h2>
+            <h3 class="post-subtitle">Genere: {{home.genre}}</h3>
+        </a>
+        <p class="post-meta">
+            Autor by
+            <a href="#!">{{home.author}}</a>
+            on publicate {{home.publication_date}}
+        </p>
+    </div>
+    <hr>
+    {% endfor %}
+
+
+
+{% endblock %}

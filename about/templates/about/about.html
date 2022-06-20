@@ -1,0 +1,34 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block ChangingContent %}
+{% if user.is_superuser %}
+<a class="btn btn-primary" href="{% url 'about:about_add' %}"><i class="fas fa-plus"></i> Add About</a>
+{% endif %}
+
+<div class="row">
+{% for c in object_list %}
+<div class="col-6">
+<div class="card">
+    <div class="card-body">
+                <div class="post-preview">
+                    <p><strong class="post-subtitle">Descripcion:</strong> {{c.descripcion}}</p>
+                    <p><h2 class="post-title">{{c.nombre}}</h2></p>
+                    <p class="post-meta">
+                        Autor by
+                        {{c.user_creation}}
+                        on publicate {{c.date_creation}}
+                    </p>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'about:about_edit' c.id %}" class="btn btn-primary">Edd About</a>
+                    <a href="{% url 'about:about_delete' c.id %}" class="btn btn-danger">Borrar el libro</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<hr>
+
+{% endblock %}
