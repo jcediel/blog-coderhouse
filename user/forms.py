@@ -12,6 +12,7 @@ class UserRegisterForm(UserCreationForm):
     first_name = forms.CharField(label='Nombre', min_length=3)
     last_name = forms.CharField(label='Apellido', min_length=3)
     email = forms.EmailField(label='Correo electrónico')
+    # avatar = forms.ImageField(label='Insert Image')
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput)
 
@@ -44,6 +45,11 @@ class UserEditForm(UserChangeForm):
 
 
 class AvatarForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for form in self.visible_fields():
+            form.field.widget.attrs['class'] = 'form-control'
+    
     class Meta:
         model = Avatar
         fields = ('image', )

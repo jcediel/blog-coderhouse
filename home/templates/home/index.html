@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>{{ tittle }}</title>
+        <title>Blog | Books</title>
         <link rel="icon" type="image/x-icon" href="{% static 'home/assets/favicon.ico' %}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -29,12 +29,11 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'home:home-list' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about:about_list' %}">About</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li> -->
-                        {% if user.is_authenticated %}
-                        <a class="btn btn-secondary" href="{% url 'user:user-update' %}">Editar usuario</a>
-                        <a class="btn btn-primary" href="{% url 'user:user-logout' %}">Cerrar Sesión</a>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'user:user-update' %}">Profile</a></li>
+                        {% if user.is_authenticated %}                        
+                        <a class="btn btn-primary  btn-sm" href="{% url 'user:user-logout' %}"><button class="btn btn"> Cerrar Sesión</button></a>
                         {% else %}
-                        <a class="btn btn-primary" href="{% url 'user:user-login' %}">Iniciar Sesión</a>
+                        <a class="btn btn-primary  btn-sm" href="{% url 'user:user-login' %}"><button class="btn btn">  Iniciar Sesión</button></a>
                         {% endif %}
                     </ul>
                 </div>
@@ -46,7 +45,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>BLog Book's</h1>
+                            <h1>BLog Books</h1>
                             <span class="subheading">A Blog of different books, your opinion counts</span>
                         </div>
                     </div>
@@ -68,23 +67,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <ul class="list-inline text-center">
                             <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
+                                <a href="https://github.com/jcediel/blog-coderhouse" blank="true">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>

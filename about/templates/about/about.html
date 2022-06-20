@@ -1,17 +1,23 @@
 {% extends "home/index.html" %}
 {% load static %}
 {% block ChangingContent %}
-{% if user.is_superuser %}
-<a class="btn btn-primary" href="{% url 'about:about_add' %}"><i class="fas fa-plus"></i> Add About</a>
-{% endif %}
 
 <div class="row">
-{% for c in object_list %}
-<div class="col-6">
-<div class="card">
-    <div class="card-body">
+    <h2>{{ title_views }}</h2>
+</div>
+
+<div class="row">
+    {% for c in object_list %}
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
                 <div class="post-preview">
-                    <p><strong class="post-subtitle">Descripcion:</strong> {{c.descripcion}}</p>
+                    
+                    <p class="text-center">
+                        <img src="../media/{{c.avatar}}" alt="no foto" style="width:50%">
+                    </p>
+                    <p><strong class="post-subtitle">Descripcion:</strong> </p>
+                    <p> {{c.descripcion}}</p>
                     <p><h2 class="post-title">{{c.nombre}}</h2></p>
                     <p class="post-meta">
                         Autor by
@@ -28,7 +34,12 @@
     </div>
     {% endfor %}
 </div>
-
 <hr>
-
+<div class="card">
+    <div class="card-body">
+        {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'about:about_add' %}"><i class="fas fa-plus"></i> Add About</a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

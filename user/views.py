@@ -1,3 +1,4 @@
+
 import os
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -5,6 +6,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
+from django.views.generic import CreateView, UpdateView, DeleteView,ListView,TemplateView
+from .models import Avatar,User
 
 
 from user.forms import UserRegisterForm, UserEditForm, AvatarForm
@@ -58,6 +61,7 @@ def logout_request(request):
 @login_required
 def user_update(request):
     user = request.user
+    
     if request.method == 'POST':
         form = UserEditForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -71,10 +75,12 @@ def user_update(request):
         context={'form': form},
         template_name="user/user_form.html",
     )
+    
 
 
 @login_required
 def avatar_load(request):
+    
     if request.method == 'POST':
         form = AvatarForm(request.POST, request.FILES)
         if form.is_valid  and len(request.FILES) != 0:
@@ -97,3 +103,4 @@ def avatar_load(request):
         context={"form": form},
         template_name="user/avatar_form.html",
     )
+

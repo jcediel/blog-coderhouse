@@ -10,14 +10,14 @@
 <p><strong>Fecha de la reseña:</strong> {{ object.publication_date }}</p>
 <h4>Descripción:</h4>
 <p>{{ object.description }}</p>
-<p><a class="btn btn-primary" href="{% url 'home:home-list' %}">Regresar a los libros del catálogo</a></p>
+<p><a class="btn btn-warning btn-sm" href="{% url 'home:home-list' %}">Regresar a los libros del catálogo</a></p>
 <!-- {{home}} -->
         
 {% if user.is_superuser %}
 |
-<a href="{% url 'home:home-update' object.id %}">Editar el contenido</a>
+<a class="btn btn-info btn-sm" href="{% url 'home:home-update' object.id %}">Editar el contenido</a>
 |
-<a href="{% url 'home:home-delete' object.id %}">Borrar el libro</a>
+<a class="btn btn-danger btn-sm" href="{% url 'home:home-delete' object.id %}">Borrar el libro</a>
 {% endif %}
 
 {% endblock %}
